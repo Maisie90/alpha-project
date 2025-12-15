@@ -3,13 +3,10 @@ const fs = require('fs')
 
 const db = require('./connect')
 
-const countriesSql = fs.readFileSync('./backend/db/countries.sql').toString()  // sql represents this file
-const questionsSql = fs.readFileSync('./backend/db/questions.sql').toString()
-const answersSql = fs.readFileSync('./backend/db/answers.sql').toString()
+const sql = fs.readFileSync('./backend/db/quiz.sql').toString()  // sql represents this file
 
-db.query(countriesSql)
-    .then(() => db.query(questionsSql))
-    .then(() => db.query(answersSql)) 
+
+db.query(sql)
     .then((data) => { 
         db.end()      
         console.log('Setup complete');
