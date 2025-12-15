@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const userRouter = require('./routers/user.js');
 
 //Middleware to parese JSON Bodies (Handling data from frontend)
 app.use(express.json());
