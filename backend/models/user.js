@@ -43,14 +43,14 @@ class User {
   }
 
   static async getOneByUsername(username) {
-    console.log("running /login from user model")
+    console.log("running getOneByUsername from user model")
     const response = await db.query("SELECT * FROM users WHERE username = $1", [
       username,
     ])
     if (response.rows.length != 1) {
       throw new Error("Unable to locate user.")
     }
-    console.log("returning /login from user model")
+    console.log("returning getOneByUsername from user model")
     return new User(response.rows[0])
   }
 
