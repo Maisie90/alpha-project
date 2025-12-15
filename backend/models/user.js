@@ -56,6 +56,14 @@ class User {
 
   static async create(data) {
     const { username, password, name, role } = data
+    // Check if username already exists
+    const existingUser = await db.query(
+      "SELECT * FROM users WHERE username = $1",
+      [username],
+    )
+    if (existingUser.rows.length > 0) {
+      throw new Error("Username already taken.")
+    }
     let response = await db.query(
       "INSERT INTO users (username, password, name, role) VALUES ($1, $2, $3, $4) RETURNING id;",
       [username, password, name, role],
