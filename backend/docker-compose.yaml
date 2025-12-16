@@ -1,12 +1,17 @@
-name: alpha-api
-
+version: "3.8"
 services:
   backend:
-    build: .
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     environment:
-      - DATABASE_URL=postgres://postgres:password@db:5432/alpha_db
+      - DB_URL=${DB_URL}
+      - SECRET_TOKEN=${SECRET_TOKEN}
+      - BCRYPT_SALT_ROUNDS=${BCRYPT_SALT_ROUNDS}
     depends_on:
       - db
 
@@ -15,8 +20,11 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=alpha_db
+      - POSTGRES_DB=alpha_project_db
     ports:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
