@@ -1,32 +1,61 @@
-const loginForm = document.querySelector("form");
+// username: student1
+// password: password
 
-loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+// username: teacher1
+// password: password
 
-    const username = document.querySelector("input[name='username']").value;
-    const password = document.querySelector("input[name='password']").value;
+const loginForm = document.querySelector("form")
 
-    if (!username || !password) {
-        alert("Please enter a username and password");
-        return;
-    }
+loginForm.addEventListener("submit", async function (event) {
+  event.preventDefault()
 
-    let role = "student";
+  const form = new FormData(event.target)
 
-    if (username.toLowerCase() === "teacher") {
-        role = "teacher";
-    }
+  //   const username = document.querySelector("input[name='username']").value
+  //   const password = document.querySelector("input[name='password']").value
 
-    const user = {
-        username: username,
-        role: role
-    };
+  if (!form.get("username") || !form.get("password")) {
+    alert("Please enter a username and password")
+    return
+  }
 
-    localStorage.setItem("user", JSON.stringify(user));
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: form.get("username"),
+      password: form.get("password"),
+    }),
+  }
 
-    if (role === "teacher") {
-        window.location.href = "teacher.html";
+  const response = await fetch("http://localhost:3000/users/login", options)
+  const data = await response.json()
+
+  if (response.status == 200) {
+    localStorage.setItem("token", data.token)
+    console.log(data)
+    if (data.role === "teacher") {
+      window.location.assign("teacher.html")
     } else {
-        window.location.href = "challenge.html";
+      window.location.assign("challenge.html")
     }
-});
+  } else {
+    alert(data.error)
+  }
+
+  // let role = "student";
+
+  // if (username.toLowerCase() === "teacher") {
+  //     role = "teacher";
+  // }
+
+  // const user = {
+  //     username: username,
+  //     role: role
+  // };
+
+  // localStorage.setItem("user", JSON.stringify(user));
+})
