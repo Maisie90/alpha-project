@@ -1,33 +1,4 @@
-const questions = [
-    {
-        question_text: "What is the capital of France?",
-        answers: [
-            { answer_text: "Paris", correct_answer: true },
-            { answer_text: "Rome", correct_answer: false },
-            { answer_text: "Berlin", correct_answer: false },
-            { answer_text: "Madrid", correct_answer: false }
-        ]
-    },
-    {
-        question_text: "Which continent is Brazil in?",
-        answers: [
-            { answer_text: "Europe", correct_answer: false },
-            { answer_text: "Africa", correct_answer: false },
-            { answer_text: "South America", correct_answer: true },
-            { answer_text: "Asia", correct_answer: false }
-        ]
-    },
-    {
-        question_text: "What is the capital of Japan?",
-        answers: [
-            { answer_text: "Seoul", correct_answer: false },
-            { answer_text: "Tokyo", correct_answer: true },
-            { answer_text: "Beijing", correct_answer: false },
-            { answer_text: "Bangkok", correct_answer: false }
-        ]
-    }
-];
-
+let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let streak = 0;
@@ -43,6 +14,50 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+}
+
+function groupQuestions(apiData) {
+    const grouped = {};
+
+    apiData.forEach(item => {
+        if (!grouped[item.question_id]) {
+            grouped[item.question_id] = {
+                question_text: item.question,
+                answers: []
+            };
+        }
+
+        grouped[item.question_id].answers.push({
+            answer_text: item.answer_text,
+            correct_answer: item.correct_answer
+        });
+    });
+
+    return Object.values(grouped);
+}
+
+async function fetchQuestions() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        window.location.assign("index.html");
+        return;
+    }
+
+    const response = await fetch(
+        "http://localhost:3000/api/quizzes/quiz/",
+        {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const apiData = await response.json();
+    questions = groupQuestions(apiData);
+    loadQuestion();
 }
 
 function loadQuestion() {
@@ -64,15 +79,10 @@ form.addEventListener("submit", function (event) {
     let selectedIndex = -1;
 
     answerInputs.forEach((input, index) => {
-        if (input.checked) {
-            selectedIndex = index;
-        }
+        if (input.checked) selectedIndex = index;
     });
 
-    if (selectedIndex === -1) {
-        alert("Please select an answer");
-        return;
-    }
+    if (selectedIndex === -1) return;
 
     const isCorrect =
         questions[currentQuestionIndex].answers[selectedIndex].correct_answer;
@@ -97,4 +107,4 @@ form.addEventListener("submit", function (event) {
     }
 });
 
-loadQuestion();
+fetchQuestions();
