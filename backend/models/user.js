@@ -64,6 +64,21 @@ class User {
     if (existingUser.rows.length > 0) {
       throw new Error("Username already taken.")
     }
+    if (!data.name) {
+      throw new Error("Name is missing")
+    }
+
+    if (!data.username) {
+      throw new Error("Username is missing")
+    }
+
+    if (!data.password) {
+      throw new Error("Password is missing")
+    }
+    if (!data.role) {
+      throw new Error("Role is missing")
+    }
+
     let response = await db.query(
       "INSERT INTO users (username, password, name, role) VALUES ($1, $2, $3, $4) RETURNING id;",
       [username, password, name, role],
