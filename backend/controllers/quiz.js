@@ -39,7 +39,8 @@ const removeQuestion = async (req, res) => {
 
 const createQuestion = async (req, res) => {
     try {
-        const newQuestion = await Quiz.addQuestion(req.body);
+        const {questionText, optionsAndAnswers} = req.body;
+        const newQuestion = await Quiz.addQuestion(questionText, optionsAndAnswers );
         res.status(201).json({message:"Question added", data:newQuestion});
     } catch(error) {
         res.status(400).json({message:'Failed to add question', error:error.message})
@@ -50,7 +51,5 @@ module.exports = {
     getAllQuizzes,
     getQuizById,
     removeQuestion,
-    createQuestion
-    
-};
+    createQuestion};
     
