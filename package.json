@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "dev": "nodemon -L backend/index.js",
     "start": "node backend/index.js",
-    "setup-db": "node ./backend/db/setup.js"
+    "setup-db": "node ./backend/db/setup.js",
+    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
+    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose",
+    "integrationTests": "jest --testPathPattern=/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
+    "coverage": "jest --coverage --testPathPattern=/unit/"
   },
   "repository": {
     "type": "git",
