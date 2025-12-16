@@ -8,9 +8,9 @@
     "start": "node backend/index.js",
     "setup-db": "node ./backend/db/setup.js",
     "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
-    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose",
-    "integrationTests": "jest --testPathPattern=/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
-    "coverage": "jest --coverage --testPathPattern=/unit/"
+    "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --verbose",
+    "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
+    "userCoverage": "jest --coverage --testPathPattern=/user/unit/"
   },
   "repository": {
     "type": "git",
