@@ -178,3 +178,9 @@ form button {
     font-weight: bold;
     cursor: pointer;
 }
+
+#streak-display {
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
