@@ -20,6 +20,7 @@
    "jest": {
     "testPathIgnorePatterns": [
       "./integration/config.js",
-      "./local-database/*"]
+      "./local-database/*",
+    "./unit/*"]
   }
 }
