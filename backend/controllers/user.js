@@ -9,6 +9,7 @@ const User = require("../models/user")
 require("dotenv").config()
 
 async function register(req, res) {
+  console.log("running /register from users controller")
   try {
     const data = req.body
 
