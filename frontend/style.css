@@ -6,54 +6,61 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #1f2937;
+    background-image: url("/frontend/assets/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #2d4f53; 
 }
 
 nav {
     display: flex;
     align-items: center;
-    padding: 22px 32px;
-    background: linear-gradient(135deg, #34d399, #22c55e, #60a5fa);
+    overflow: auto;
+    padding: 1px 32px;
+    background: transparent;
+    backdrop-filter: blur(15px);
 }
 
-nav h1 {
-    margin-right: auto;
-    font-size: 1.9rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 1px;
+.logo {
+    height: 120px;
+    width: auto;
+    margin-right: 16px;
+}
+
+.nav-links {
+    margin-left: auto;
 }
 
 nav a {
     margin-left: 24px;
-    padding: 8px 14px;
+    padding: 6px 14px;
     text-decoration: none;
     font-weight: bold;
-    color: #ffffff;
+    color: #2d4f53;
     border-radius: 20px;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(87, 177, 238, 0.35);
 }
 
 section {
     max-width: 900px;
     margin: 30px auto;
     padding: 32px;
-    background-color: #ffffff;
+    background-color: #d6f0eb; 
     border-radius: 16px;
 }
 
 section:first-of-type {
-    background: linear-gradient(135deg, #dcfce7, #e0f2fe);
+    background: linear-gradient(135deg, #cce7e2, #dff3f8); 
 }
 
 section h2 {
     margin-bottom: 18px;
     font-size: 1.8rem;
-    color: #15803d;
+    color: #2d4f53; /* matching body text */
     position: relative;
 }
 
@@ -64,7 +71,7 @@ section h2::after {
     height: 5px;
     margin-top: 8px;
     border-radius: 5px;
-    background: linear-gradient(90deg, #22c55e, #60a5fa);
+    background: linear-gradient(135deg, #cce7e2, #dff3f8); 
 }
 
 section p {
@@ -74,65 +81,60 @@ section p {
 }
 
 section:not(:first-of-type) {
-    border-left: 8px solid #22c55e;
-    background: linear-gradient(135deg, #ffffff, #f0fdf4);
+    background: linear-gradient(135deg, #cce7e2, #dff3f8);
 }
 
 form {
     margin-top: 10px;
-}
-
-form label {
-    font-weight: bold;
-    color: #065f46;
+    
 }
 
 form input {
+    display: flex;
+    align-items: center;
     width: 100%;
-    max-width: 380px;
     padding: 14px;
     margin-top: 8px;
-    border: 2px solid #86efac;
+    border: 2px solid #2d4f53;
     border-radius: 14px;
     font-size: 1rem;
-    background-color: #f0fdf4;
+    background-color: #f4f8f7;
+    cursor: pointer;
 }
 
 form input:focus {
     outline: none;
-    border-color: #22c55e;
-    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    border-color: #2d4f53;
+    box-shadow: 0 0 0 4px rgba(63, 165, 140, 0.25);
 }
 
 form button {
     margin-top: 22px;
     padding: 14px 40px;
-    background: linear-gradient(135deg, #22c55e, #4ade80);
+    background: linear-gradient(135deg, #2d4f53, #5b9aa1);
     color: #ffffff;
     border: none;
     border-radius: 999px;
     font-size: 1.05rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+    box-shadow: 0 8px 20px rgba(63, 165, 140, 0.35);
 }
 
 form button:hover {
-    box-shadow: 0 12px 28px rgba(34, 197, 94, 0.45);
+    box-shadow: 0 12px 28px rgba(63, 165, 140, 0.45);
 }
 
 footer {
     text-align: center;
     padding: 24px;
-    color: #475569;
+    color: #2d4f53;
 }
 
 hr {
     display: none;
 }
-form {
-    margin-top: 20px;
-}
+
 
 form > div {
     display: grid;
@@ -140,20 +142,23 @@ form > div {
     gap: 18px;
 }
 
+
 form label {
     display: block;
     padding: 20px;
-    background-color: #f0fdf4;
-    border: 2px solid #86efac;
-    border-radius: 16px;
+    background: linear-gradient(135deg, #cce7e2, #dff3f8);;
+    /* border: 2px solid #2d4f53;
+    border-radius: 16px; */
     cursor: pointer;
     font-weight: bold;
     text-align: center;
     transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+    color: #2d4f53;
 }
 
-form label:hover {
-    background-color: #dcfce7;
+
+form input:hover {
+    background-color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -162,19 +167,19 @@ form input[type="radio"] {
 }
 
 form label:has(input[type="radio"]:checked) {
-    background-color: #22c55e;
-    border-color: #16a34a;
+    background-color: #2d4f53;
+    border-color: #2d4f53;
     color: #ffffff;
 }
 
-form button {
+/* form button {
     margin-top: 28px;
     padding: 14px 40px;
-    background: linear-gradient(135deg, #22c55e, #4ade80);
+    background: linear-gradient(135deg, #3fa58c, #4fb6a3);
     color: #ffffff;
     border: none;
     border-radius: 999px;
     font-size: 1.05rem;
     font-weight: bold;
     cursor: pointer;
-}
+} */
