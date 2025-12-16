@@ -41,7 +41,7 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "./__tests__/integration/config.js"
+      "./__tests__/user/integration/config.js"
     ]
   }
 }
