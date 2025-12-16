@@ -14,7 +14,16 @@ class Quiz {
     const result = await db.query(
       "SELECT * FROM questions AS q JOIN answers AS a ON q.id = a.question_id ORDER BY q.id;",
     )
-    return result.rows.map((row) => new Quiz(row))
+    return result.rows.map(
+      (row) =>
+        new Quiz(
+          row.id,
+          row.question_text,
+          row.option,
+          row.answer_text,
+          row.correct_answer,
+        ),
+    )
   }
 
   static async getOneQuestion(questionId) {
@@ -27,7 +36,7 @@ class Quiz {
     }
     const row = result.rows[0]
     return new Quiz(
-      row.q.id,
+      row.id,
       row.question_text,
       row.option,
       row.answer_text,
