@@ -29,20 +29,22 @@ class Quiz {
 
   static async getOneQuestion(questionId) {
     const result = await db.query(
-      "SELECT q.id, question_text, option, answer_text, correct_answer FROM questions AS q JOIN answers AS a ON q.id = a.question_id WHERE q.id = $1;",
+      "SELECT * FROM questions AS q JOIN answers AS a ON q.id = a.question_id WHERE q.id = $1;",
       [questionId],
     )
     if (result.rows.length === 0) {
       return null
     }
-    const row = result.rows[0]
-    return new Quiz(
-      row.id,
-      row.question_id,
-      row.question_text,
-      row.option,
-      row.answer_text,
-      row.correct_answer,
+    return result.rows.map(
+      (row) =>
+        new Quiz(
+          row.id,
+          row.question_id,
+          row.question_text,
+          row.option,
+          row.answer_text,
+          row.correct_answer,
+        ),
     )
   }
 
