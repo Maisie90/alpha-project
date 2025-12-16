@@ -111,19 +111,40 @@ form input:focus, form select:focus {
 }
 
 form button {
+    display: flex;
+    justify-content: center;
     margin-top: 22px;
     padding: 14px 40px;
-    background: linear-gradient(135deg, #2d4f53, #5b9aa1);
-    color: #ffffff;
-    border: none;
+    background: transparent;
+    color: #2d4f53;
+    border: 1px solid #2d4f53;
     border-radius: 999px;
     font-size: 1.05rem;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(63, 165, 140, 0.35);
+   
 }
 
 form button:hover {
+    box-shadow: 0 12px 28px rgba(63, 165, 140, 0.45);
+}
+
+.button-link {
+    display: inline-block;
+    padding: 14px 40px;
+    background: transparent;
+    color: #2d4f53;
+    border: 1px solid #2d4f53;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(63, 165, 140, 0.35);
+    text-decoration: none;
+}
+
+.button-link:hover {
     box-shadow: 0 12px 28px rgba(63, 165, 140, 0.45);
 }
 
@@ -198,4 +219,19 @@ form label:has(input[type="radio"]:checked) {
     align-self: flex-end;
     margin-left: 8px;
     font-size: 1.5rem;
+}
+
+#role label{
+    font-weight: bold;
+    color: #2d4f53;
+}
+
+#role select {
+    padding: 14px;
+    margin-top: 8px;
+    border: 2px solid #2d4f53;
+    border-radius: 14px;
+    font-size: 1rem;
+    background-color: #f4f8f7;
+    cursor: pointer;
 }
