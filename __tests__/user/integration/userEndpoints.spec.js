@@ -25,7 +25,7 @@ describe("User API Endpoints", () => {
       const response = await request(api).get("/")
 
       expect(response.statusCode).toBe(200)
-      expect(response).toBe("Server is Running")
+      expect(response.text).toBe("Server is Running")
     })
   })
   
