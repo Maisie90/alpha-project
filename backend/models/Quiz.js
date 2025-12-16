@@ -18,6 +18,7 @@ class Quiz {
       (row) =>
         new Quiz(
           row.id,
+          row.question_id,
           row.question_text,
           row.option,
           row.answer_text,
@@ -37,6 +38,7 @@ class Quiz {
     const row = result.rows[0]
     return new Quiz(
       row.id,
+      row.question_id,
       row.question_text,
       row.option,
       row.answer_text,
