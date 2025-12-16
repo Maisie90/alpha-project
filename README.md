@@ -166,3 +166,62 @@ The wireframes informed several key design decisions, including:
 - A simple and consistent layout to minimise cognitive load
 - Clear call-to-action buttons to guide students through quizzes
 - A clean interface to support focus and reduce distraction during learning
+
+---
+# High-Level Solution Diagram
+---
+# Database Schema (ERD)
+---
+# Technologies Used
+
+### Frontend
+- HTML – Structure and layout of the user interface
+- CSS – Styling and responsive design
+- JavaScript – Client-side logic and interactivity
+
+### Backend
+- Node.js – JavaScript runtime environment
+- Express.js – RESTful API framework
+- PostgreSQL – Relational database for storing users, quizzes, and questions
+
+### Testing
+- Jest – Unit and integration testing
+
+### Tooling & Project Management
+- VSCode - Programming
+- Git & GitHub – Version control and team collaboration
+- Trello – Agile project planning and task management
+- Figma – Wireframes and UI design
+- Postman – API testing and debugging
+- Supabase - Database
+
+---
+
+# Getting Started
+
+This section provides a high-level overview of how to access and explore the Project Alpha application.
+
+### Accessing the Application
+
+The deployed version of the application can be accessed via the following link:
+t 
+🔗 link!!!!!
+
+The live deployment demonstrates the full MVP functionality and was used during the project presentation.
+
+---
+
+### Running the Project Locally
+
+For development or testing purposes, the application can also be run locally.
+
+Detailed setup instructions for each part of the system can be found in the following locations:
+
+- [Backend Setup Guide](backend/README.md)
+- [Frontend Setup Guide](frontend/README.md)
+
+These guides include environment setup, dependency installation, and commands required to run each service locally.
+
+
+
+
