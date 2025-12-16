@@ -1,3 +1,4 @@
 .env
 /node_modules
 backend/db/drizzle
+/__tests__/user/local-database
