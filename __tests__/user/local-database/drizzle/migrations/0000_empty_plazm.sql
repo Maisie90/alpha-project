@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS "users";--> statement-breakpoint
+DROP TYPE IF EXISTS "public"."user_role";--> statement-breakpoint
+
+
+
 CREATE TYPE "public"."user_role" AS ENUM('student', 'teacher');--> statement-breakpoint
 CREATE TABLE "users" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
