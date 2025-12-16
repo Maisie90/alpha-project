@@ -54,7 +54,8 @@ section {
 }
 
 section:first-of-type {
-    background: linear-gradient(135deg, #cce7e2, #dff3f8); 
+    background: linear-gradient(135deg, #76ecf5, #f6f7f5, #f7e0b5);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 section h2 {
@@ -64,15 +65,15 @@ section h2 {
     position: relative;
 }
 
-section h2::after {
+/* section h2::after {
     content: "";
     display: block;
     width: 60px;
     height: 5px;
     margin-top: 8px;
     border-radius: 5px;
-    background: linear-gradient(135deg, #cce7e2, #dff3f8); 
-}
+    background: linear-gradient(135deg, #cce7e2, #dff3f8);
+} */
 
 section p {
     margin-bottom: 14px;
@@ -81,7 +82,8 @@ section p {
 }
 
 section:not(:first-of-type) {
-    background: linear-gradient(135deg, #cce7e2, #dff3f8);
+    background: linear-gradient(135deg, #76ecf5, #f6f7f5, #f7e0b5);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 form {
@@ -142,13 +144,25 @@ form > div {
     gap: 18px;
 }
 
+#quiz-form label {
+    display: block;
+    padding: 20px;
+    background: transparent;
+    border: 2px solid #2d4f53;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+    color: #2d4f53;
+}
 
 form label {
     display: block;
     padding: 20px;
-    background: linear-gradient(135deg, #cce7e2, #dff3f8);;
-    border: 2px solid #2d4f53;
-    border-radius: 16px;
+    background: transparent;
+    /* border: 2px solid #2d4f53;
+    border-radius: 16px; */
     cursor: pointer;
     font-weight: bold;
     text-align: center;
@@ -172,20 +186,16 @@ form label:has(input[type="radio"]:checked) {
     color: #ffffff;
 }
 
-/* form button {
-    margin-top: 28px;
-    padding: 14px 40px;
-    background: linear-gradient(135deg, #3fa58c, #4fb6a3);
-    color: #ffffff;
-    border: none;
-    border-radius: 999px;
-    font-size: 1.05rem;
-    font-weight: bold;
-    cursor: pointer;
-} */
 
 #streak-display {
-    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 1.1rem;
+}
+#streak-count {
+    align-self: flex-end;
+    margin-left: 8px;
+    font-size: 1.5rem;
 }
