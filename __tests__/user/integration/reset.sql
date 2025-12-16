@@ -2,7 +2,5 @@ TRUNCATE users RESTART IDENTITY;
 
 INSERT INTO users (username, password, name, role) 
 VALUES
-('teacher1', 'teacher1pass', 'Teacher One', 'teacher'),
-('student1', 'student1pass', 'Student One', 'student'),
-('student2', 'student2pass', 'Student Two', 'student');
-
+('student1', '$2b$10$R8MscPVjfmAVAZCzt35.4.nBHt/Rh0FlE02CY69ig5PDIE6GQrvDW', 'Student One', 'student'),
+('teacher1', '$2b$10$gon7MqMFRIfSmyconbXor.odum8L8fP8U7j8BbrF/KHQlvQj9HiCe', 'Teacher One', 'teacher');
