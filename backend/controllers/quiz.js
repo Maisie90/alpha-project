@@ -1,5 +1,4 @@
 const Quiz = require('../models/Quiz');
-const quizModel = require('../models/Quiz');
 
 const getAllQuizzes = async (req, res) => {
 
