@@ -4,4 +4,6 @@ COPY package*.json ./
 RUN npm ci --only=production
 COPY . .
 EXPOSE 3000
-CMD ["node","index.js"]
+
+# Run the backend entry file from the copied repository root
+CMD ["node", "backend/index.js"]
