@@ -17,10 +17,12 @@
     "jest": "^30.2.0",
     "supertest": "^7.1.4"
   },
-   "jest": {
+  "jest": {
     "testPathIgnorePatterns": [
-      "./integration/config.js",
+      "./__tests__/user/integration/local-config.js",
+      "./__tests__/user/integration/config.js",
       "./local-database/*",
-    "./unit/*"]
+      "./unit/*"
+    ]
   }
 }
