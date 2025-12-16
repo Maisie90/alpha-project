@@ -17,7 +17,7 @@ class Quiz {
     return result.rows.map(
       (row) =>
         new Quiz(
-          row.q.id,
+          row.id,
           row.question_text,
           row.option,
           row.answer_text,
