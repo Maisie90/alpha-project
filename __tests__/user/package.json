@@ -22,7 +22,8 @@
       "./__tests__/user/integration/local-config.js",
       "./__tests__/user/integration/config.js",
       "./local-database/*",
-      "./unit/*"
+      "./unit/*",
+      "./node_modules/*"
     ]
   }
 }
