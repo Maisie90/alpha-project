@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:17.0
-    container_name: user_auth_backend_test_db
+    container_name: test-db-alpha-project
     hostname: localhost
     ports:
       - "5432:5432"

@@ -1,4 +1,4 @@
-const { defineConfig } = require("drizzle-kit")
+const { defineConfig } = require("./node_modules/drizzle-kit")
 
 module.exports = defineConfig({
   dialect: "postgresql",
