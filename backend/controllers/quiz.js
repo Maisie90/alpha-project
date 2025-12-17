@@ -5,9 +5,10 @@ const getAllQuizzes = async (req, res) => {
     try{
         console.log("running getAllQuizzes from quiz controller")
         const questions = await Quiz.getAllQuestionsAndAnswers();
-        console.log("returning getAllQuizzes from quiz controller")
+        console.log("success getAllQuizzes from quiz controller")
         res.status(200).json(questions);
     } catch (error) {
+        console.log("error in getAllQuizzes from quiz controller", error.message)
         res.status(500).json({message : "Error Fetching Quizzes", error : error.message});
     };
 };
