@@ -3,6 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch: {}
 
 jobs:
   build-and-push:
@@ -40,5 +41,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             docker pull yasminrei/alpha-project-backend:latest
+            cd ~/backend || cd backend || exit 0
             docker compose pull backend || true
             docker compose up -d --remove-orphans
