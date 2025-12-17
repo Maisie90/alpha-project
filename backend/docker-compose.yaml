@@ -1,14 +1,16 @@
 version: "3.8"
 services:
   backend:
-    build:
-      context: ..
-      dockerfile: backend/Dockerfile
-    ports:
-      - "4000:3000"
+    image: yasminrei/alpha-project-backend:latest
+    container_name: alpha-project-backend
+    restart: unless-stopped
     env_file:
-      - .env
+      - /home/ubuntu/backend/.env
     environment:
-      - DB_URL=${DB_URL}
-      - SECRET_TOKEN=${SECRET_TOKEN}
-      - BCRYPT_SALT_ROUNDS=${BCRYPT_SALT_ROUNDS}
+      - PORT=5000
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+    external: true
