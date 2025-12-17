@@ -1,0 +1,83 @@
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+        window.location.assign("index.html");
+        return;
+    }
+
+    const questionText = form.question.value.trim();
+
+    const correctAnswer = form.correct_answer.value.trim();
+    const wrongAnswer1 = form.wrong_answer_1.value.trim();
+    const wrongAnswer2 = form.wrong_answer_2.value.trim();
+    const wrongAnswer3 = form.wrong_answer_3.value.trim();
+
+    if (
+        !questionText ||
+        !correctAnswer ||
+        !wrongAnswer1 ||
+        !wrongAnswer2 ||
+        !wrongAnswer3
+    ) {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    const payload = {
+        question_text: questionText,
+        answers: [
+            {
+                option: "a",
+                answer_text: correctAnswer,
+                correct_answer: true
+            },
+            {
+                option: "b",
+                answer_text: wrongAnswer1,
+                correct_answer: false
+            },
+            {
+                option: "c",
+                answer_text: wrongAnswer2,
+                correct_answer: false
+            },
+            {
+                option: "d",
+                answer_text: wrongAnswer3,
+                correct_answer: false
+            }
+        ]
+    };
+
+    try {
+        const response = await fetch(
+            "http://localhost:3000/quizzes/quiz",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            }
+        );
+
+        if (!response.ok) {
+            const error = await response.json();
+            console.error(error);
+            alert("Failed to save question");
+            return;
+        }
+
+        alert("Question saved successfully");
+        form.reset();
+
+    } catch (error) {
+        console.error(error);
+        alert("Failed to save question");
+    }
+});

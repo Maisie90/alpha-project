@@ -45,7 +45,7 @@ async function fetchQuestions() {
     }
 
     const response = await fetch(
-        "http://localhost:3000/api/quizzes/quiz/",
+        "https://api.alpha-project.duckdns.org/quizzes/quiz",
         {
             method: "GET",
             headers: {
