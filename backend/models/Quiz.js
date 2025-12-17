@@ -49,19 +49,66 @@ class Quiz {
   }
 
   static async addQuestion(questionText, optionsAndAnswers) {
+    console.log("running addQuestion in Quiz model")
     try {
       const insertQuestion = await db.query(
         "INSERT INTO questions (question_text) VALUES ($1) RETURNING id;",
         [questionText],
       )
       const questionId = insertQuestion.rows[0].id
-      const { option, answer_text, correct_answer } = optionsAndAnswers
-      for (let i = 0; i < option.length; i++) {
+
+      let answersArray = []
+
+      if (Array.isArray(optionsAndAnswers)) {
+        answersArray = optionsAndAnswers
+      }
+      else if (optionsAndAnswers && Array.isArray(optionsAndAnswers.answers)) {
+        answersArray = optionsAndAnswers.answers
+      }
+      else if (
+        optionsAndAnswers &&
+        (Array.isArray(optionsAndAnswers.option) || Array.isArray(optionsAndAnswers.answer_text))
+      ) {
+        const opts = optionsAndAnswers.option || []
+        const texts = optionsAndAnswers.answer_text || []
+        const corrects = optionsAndAnswers.correct_answer || []
+        const maxLength = Math.max(opts.length, texts.length, corrects.length)
+
+        for (let i = 0; i < maxLength; i++) {
+          answersArray.push({
+            option: opts[i],
+            answer_text: texts[i],
+            correct_answer: corrects[i],
+          })
+        }
+      } else {
+        // Unsupported input shape — give a clear error for beginners
+        throw new Error('Invalid answers format. Expect `answers` array or `option/answer_text/correct_answer` arrays.')
+      }
+
+      // 3) Insert each answer row. The DB expects a single-char `option` (A/B/C...)
+      for (let i = 0; i < answersArray.length; i++) {
+        const item = answersArray[i] || {}
+
+        // Use provided option letter if present, otherwise generate A, B, C...
+        const rawOption = item.option
+        const label = rawOption
+          ? String(rawOption).toUpperCase().slice(0, 1)
+          : String.fromCharCode(65 + i)
+
+        // Prefer explicit `answer_text`; fall back to `option` text if absent
+        const answerText = item.answer_text ?? item.option ?? ''
+
+        // Ensure boolean for correct_answer
+        const isCorrect = !!item.correct_answer
+
         await db.query(
           "INSERT INTO answers (question_id, option, answer_text, correct_answer) VALUES ($1, $2, $3, $4);",
-          [questionId, option[i], answer_text[i], correct_answer[i]],
+          [questionId, label, answerText, isCorrect],
         )
       }
+
+      console.log("success addQuestion in Quiz model")
       return questionId
     } catch (error) {
       console.error("Error adding question:", error)
