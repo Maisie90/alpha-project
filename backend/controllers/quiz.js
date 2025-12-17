@@ -34,7 +34,7 @@ const removeQuestion = async (req, res) => {
   try {
     const { id } = req.params
     await Quiz.deleteQuestion(id)
-    res.status(200).json({ message: "Question Deleted" })
+    res.status(204).json({ message: "Question Deleted" })
   } catch (error) {
     res
       .status(500)
