@@ -10,7 +10,7 @@ app.use(cors());
 
 //check if backend is working
 app.get('/',(req, res) => {
-    res.status(200).send('Server is running');
+    res.status(200).send('Server is Running');
 
 });
 
