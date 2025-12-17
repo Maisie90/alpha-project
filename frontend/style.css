@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+h1, h2, h3, h4, h5, h6, a, button {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
+}
+
+body, p, span, li {
+    font-family: 'Roboto', sans-serif;
+}
 body {
-    font-family: Arial, sans-serif;
     background-image: url("/frontend/assets/background1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     color: #2d4f53; 
 }
 
@@ -20,7 +31,7 @@ nav {
     overflow: auto;
     padding: 1px 32px;
     background: transparent;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(1px);
 }
 
 .logo {
@@ -38,13 +49,23 @@ nav a {
     padding: 6px 14px;
     text-decoration: none;
     font-weight: bold;
-    color: #479400;
+    color: #356d00;
     border-radius: 20px;
 }
 
 nav a:hover {
     background-color: rgba(255, 224, 124, 0.35);
 }
+
+img.welcome {
+    display: block;
+    object-fit: contain;
+    width: 30%;
+    margin: auto;
+    padding: 0;
+    height: auto;
+}
+
 
 section {
     max-width: 900px;
@@ -71,6 +92,11 @@ section h2 {
     position: relative;
 }
 
+section.home-page {
+    max-width: 900px;
+    background-color: #d6f0eb; 
+    border-radius: 16px;
+}
 /* section h2::after {
     content: "";
     display: block;
