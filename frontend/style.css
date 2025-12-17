@@ -6,10 +6,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url("/frontend/assets/background.png");
+    background-image: url("/frontend/assets/background1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #2d4f53; 
 }
 
@@ -37,12 +38,12 @@ nav a {
     padding: 6px 14px;
     text-decoration: none;
     font-weight: bold;
-    color: #2d4f53;
+    color: #479400;
     border-radius: 20px;
 }
 
 nav a:hover {
-    background-color: rgba(87, 177, 238, 0.35);
+    background-color: rgba(255, 224, 124, 0.35);
 }
 
 section {
@@ -217,13 +218,19 @@ form label:has(input[type="radio"]:checked) {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px auto;
     font-size: 1.5rem;
     font-weight: bold;
+    background-image: url(/frontend/assets/streak-counter.png);
+    width: 300px;
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #streak-count {
-    align-self: flex-end;
-    margin-left: 8px;
-    font-size: 1.5rem;
+    margin-top: 45px;
+    color: #ff9b04;
 }
 
 #role label{
