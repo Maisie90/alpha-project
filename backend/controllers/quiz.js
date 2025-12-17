@@ -57,6 +57,12 @@ const createQuestion = async (req, res) => {
         .status(400)
         .json({ message: "Missing answers" })
     }
+    if (answers.length != 4) {
+      return res
+        .status(400)
+        .json({ message: "There must be exactly 4 answer choices" })
+    }
+
     const newQuestion = await Quiz.addQuestion(questionText, answers)
     res.status(201).json({ message: "Question added", data: newQuestion })
   } catch (error) {
