@@ -66,6 +66,14 @@ img.welcome {
     height: auto;
 }
 
+img.leaderboard {
+    display: block;
+    object-fit: contain;
+    width: 30%;
+    margin: auto;
+    padding: 0;
+    height: auto;
+}
 
 section {
     max-width: 900px;
