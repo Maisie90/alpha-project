@@ -1,44 +1,83 @@
-async function fetchQuestions() {
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
     const token = localStorage.getItem("token");
-
-    console.log("JWT token:", token);
-
     if (!token) {
-        questionText.textContent = "You are not logged in.";
+        window.location.assign("index.html");
         return;
     }
 
+    const questionText = form.question.value.trim();
+
+    const correctAnswer = form.correct_answer.value.trim();
+    const wrongAnswer1 = form.wrong_answer_1.value.trim();
+    const wrongAnswer2 = form.wrong_answer_2.value.trim();
+    const wrongAnswer3 = form.wrong_answer_3.value.trim();
+
+    if (
+        !questionText ||
+        !correctAnswer ||
+        !wrongAnswer1 ||
+        !wrongAnswer2 ||
+        !wrongAnswer3
+    ) {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    const payload = {
+        question_text: questionText,
+        answers: [
+            {
+                option: "a",
+                answer_text: correctAnswer,
+                correct_answer: true
+            },
+            {
+                option: "b",
+                answer_text: wrongAnswer1,
+                correct_answer: false
+            },
+            {
+                option: "c",
+                answer_text: wrongAnswer2,
+                correct_answer: false
+            },
+            {
+                option: "d",
+                answer_text: wrongAnswer3,
+                correct_answer: false
+            }
+        ]
+    };
+
     try {
         const response = await fetch(
-            "https://api.alpha-project.duckdns.org/quizzes/quiz",
+            "http://localhost:3000/quizzes/quiz",
             {
-                method: "GET",
+                method: "POST",
                 headers: {
+                    "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
-                }
+                },
+                body: JSON.stringify(payload)
             }
         );
 
-        console.log("Response status:", response.status);
-
         if (!response.ok) {
-            questionText.textContent = "Failed to load questions.";
+            const error = await response.json();
+            console.error(error);
+            alert("Failed to save question");
             return;
         }
 
-        const apiData = await response.json();
-        console.log("API data:", apiData);
-
-        if (!apiData || apiData.length === 0) {
-            questionText.textContent = "No questions available.";
-            return;
-        }
-
-        questions = groupQuestions(apiData);
-        loadQuestion();
+        alert("Question saved successfully");
+        form.reset();
 
     } catch (error) {
-        console.error("Fetch error:", error);
-        questionText.textContent = "Failed to load questions.";
+        console.error(error);
+        alert("Failed to save question");
     }
-}
+});
