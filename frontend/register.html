@@ -6,11 +6,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav>
-      <h1>GeoPop🌍</h1>
-      <a href="index.html">Home & Login</a>
-      <a href="challenge.html">Challenge</a>
-      <a href="teacher.html">Teacher Dashboard</a>
+     <nav>
+        <a href="index.html">    
+        <img class="logo" src="/frontend/assets/geopop.png" alt="GeoPop Logo"></a>
+        <div class="nav-links">
+        <a href="index.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="challenge.html">Challenge</a>
+        <a href="teacher.html">Teacher Dashboard</a>
+        </div>
     </nav>
 
     <section>
@@ -51,7 +55,7 @@
           </label>
         </p>
         <p>
-          <label>
+          <label id="role">
             Role<br />
             <select name="role">
               <option value="student">Student</option>
