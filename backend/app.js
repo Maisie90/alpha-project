@@ -15,6 +15,6 @@ app.get('/',(req, res) => {
 });
 
 app.use("/users", userRouter);
-app.use("/api/quizzes", quizRouter);
+app.use("/quizzes", quizRouter);
 
 module.exports = app;
