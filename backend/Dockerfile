@@ -1,9 +1,8 @@
 FROM node:22-slim
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 COPY . .
-EXPOSE 3000
 
 # Run the backend entry file from the copied repository root
-CMD ["node", "backend/index.js"]
+CMD ["node", "index.js"]

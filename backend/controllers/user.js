@@ -28,6 +28,7 @@ async function register(req, res) {
 }
 
 async function login(req, res) {
+  console.log("running login from users controller")
   const data = req.body
   try {
     console.log("running /login from users controller")

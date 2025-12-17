@@ -1,0 +1,26 @@
+{
+  "name": "drizzle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "drizzle.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:generate": "drizzle-kit generate --config ./drizzle.config.js",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate": "drizzle-kit migrate --config ./drizzle.config.js",
+    "db:push": "drizzle-kit push --config ./drizzle.config.js",
+    "db:pull": "drizzle-kit pull --config ./drizzle.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "drizzle-orm": "^0.45.1",
+    "pg": "^8.16.3",
+    "postgres": "^3.4.7"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.8"
+  }
+}

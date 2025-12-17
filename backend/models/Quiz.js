@@ -50,21 +50,43 @@ class Quiz {
 
   static async addQuestion(questionText, optionsAndAnswers) {
     try {
+      console.log("running addQuestion from quiz model")
       const insertQuestion = await db.query(
         "INSERT INTO questions (question_text) VALUES ($1) RETURNING id;",
         [questionText],
       )
       const questionId = insertQuestion.rows[0].id
-      const { option, answer_text, correct_answer } = optionsAndAnswers
-      for (let i = 0; i < option.length; i++) {
+
+      function normaliseAnswers(input) {
+        if (!input) return []
+        if (Array.isArray(input)) return input
+        if (Array.isArray(input.answers)) return input.answers
+        return []
+      }
+
+      const answers = normaliseAnswers(optionsAndAnswers)
+
+      if (!answers.length) throw new Error('No answers provided')
+
+      for (let i = 0; i < answers.length; i++) {
+        const a = answers[i]
+        let label
+        if (a && a.option) {
+          label = String(a.option).toUpperCase().charAt(0)
+        } else {
+          label = String.fromCharCode(65 + i)
+        }
+        const text = a.answer_text || ''
+        const correct = !!a.correct_answer
+
         await db.query(
           "INSERT INTO answers (question_id, option, answer_text, correct_answer) VALUES ($1, $2, $3, $4);",
-          [questionId, option[i], answer_text[i], correct_answer[i]],
+          [questionId, label, text, correct],
         )
       }
+      console.log("success addQuestion from quiz model")
       return questionId
     } catch (error) {
-      console.error("Error adding question:", error)
       throw error
     }
   }

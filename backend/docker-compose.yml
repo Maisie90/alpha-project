@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  backend:
+    image: yasminrei/alpha-project-backend:latest
+    container_name: alpha-project-backend
+    restart: unless-stopped
+    env_file:
+      - /home/ubuntu/backend/.env
+    environment:
+      - PORT=5000
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+    external: true
