@@ -281,3 +281,21 @@ form label:has(input[type="radio"]:checked) {
     background-color: #f4f8f7;
     cursor: pointer;
 }
+
+label.answers:hover {
+    box-shadow: 0 12px 28px rgba(13, 39, 32, 0.818);
+}
+
+label.answers:active {
+    transform: scale(1.1)
+}
+
+.special {
+    box-shadow: 0 12px 28px rgba(13, 39, 32, 0.818);
+}
+label.answers input[type='radio'] {
+    display:none
+}
+label.answers input[type='radio']:checked +span {
+    color: #356d00
+}
