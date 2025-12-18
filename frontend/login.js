@@ -38,9 +38,9 @@ loginForm.addEventListener("submit", async function (event) {
     localStorage.setItem("token", data.token)
     console.log(data)
     if (data.role === "teacher") {
-      window.location.assign("teacher.html")
+      window.location.assign("./teacher/index.html")
     } else {
-      window.location.assign("challenge.html")
+      window.location.assign("./challenge/index.html")
     }
   } else {
     alert(data.error)
