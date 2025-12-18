@@ -190,7 +190,6 @@ The wireframes informed several key design decisions, including:
 ### Tooling & Project Management
 - VSCode - Programming
 - Git & GitHub – Version control and team collaboration
-- Trello – Agile project planning and task management
 - Figma – Wireframes and UI design
 - Postman – API testing and debugging
 - Supabase - Database
