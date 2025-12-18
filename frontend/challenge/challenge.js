@@ -9,6 +9,7 @@ const answerInputs = form.querySelectorAll("input[type='radio']");
 const answerSpans = form.querySelectorAll("span");
 const streakCount = document.getElementById("streak-count");
 
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
