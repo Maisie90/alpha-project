@@ -16,12 +16,23 @@ async function ensureTeacher() {
 
     const data = await res.json()
     const role = data.role || data.roles || (data.user && data.user.role)
-    console.log(role)
+
     if (Array.isArray(role)) {
-      if (role !== "teacher") {
+      if (role.includes("teacher")) {
+        showApp()
+        return
+      } else {
         window.location.assign("../forbidden.html")
+        return
       }
-    } 
+    }
+
+    if (role === "teacher") {
+      showApp()
+      return
+    }
+
+    window.location.assign("../forbidden.html")
   } catch (err) {
     console.error("Role verification failed", err)
     window.location.assign("../forbidden.html")
@@ -31,6 +42,15 @@ async function ensureTeacher() {
 ;(async () => {
   await ensureTeacher()
 })()
+
+function showApp() {
+  const overlay = document.getElementById("loader-overlay")
+  if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay)
+  const app = document.getElementById("teacher-app")
+  if (app) app.style.display = ""
+  const nav = document.getElementById("teacher-nav")
+  if (nav) nav.style.display = ""
+}
 
 form.addEventListener("submit", async function (event) {
   event.preventDefault()

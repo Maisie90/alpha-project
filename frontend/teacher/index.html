@@ -1,84 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Teacher Dashboard | GeoPop</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div
+      id="loader-overlay"
+      style="
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      "
+    >
+      <iframe
+        src="../loading.html"
+        title="Authorizing"
+        style="border: 0; width: 100vw; height: 100vh; background: transparent"
+      ></iframe>
+    </div>
 
-      <nav>
-        <a href="../index.html">    
-        <img class="logo" src="../assets/geopop.png" alt="GeoPop Logo"></a>
-        <div class="nav-links">
+    <nav style="display: none" id="teacher-nav">
+      <a href="../index.html">
+        <img class="logo" src="../assets/geopop.png" alt="GeoPop Logo"
+      /></a>
+      <div class="nav-links">
         <a href="../index.html">Login</a>
         <a href="../register/index.html">Register</a>
         <a href="../challenge/index.html">Challenge</a>
         <a href="../teacher/index.html">Teacher Dashboard</a>
-        </div>
+      </div>
     </nav>
-
-    <section>
+    <div id="teacher-app" style="display: none">
+      <section>
         <h2>Teacher Dashboard</h2>
         <p>
-            Create custom quiz questions based on the topics you are
-            currently teaching. These questions will be used in student
-            quizzes once connected to the backend.
+          Create custom quiz questions based on the topics you are currently
+          teaching. These questions will be used in student quizzes once
+          connected to the backend.
         </p>
-    </section>
+      </section>
 
-    <section>
+      <section>
         <h2>Add a New Question</h2>
 
         <form>
-        
-            <p>
-                <label>
-                    Question<br>
-                    <input type="text" name="question" placeholder="e.g. What is the capital of France?">
-                </label>
-            </p>
+          <p>
+            <label>
+              Question<br />
+              <input
+                type="text"
+                name="question"
+                placeholder="e.g. What is the capital of France?"
+              />
+            </label>
+          </p>
 
-            <p>
-                <label>
-                    Correct Answer<br>
-                    <input type="text" name="correct_answer" placeholder="e.g. Paris">
-                </label>
-            </p>
+          <p>
+            <label>
+              Correct Answer<br />
+              <input
+                type="text"
+                name="correct_answer"
+                placeholder="e.g. Paris"
+              />
+            </label>
+          </p>
 
-            <p>
-                <label>
-                    Incorrect Answer 1<br>
-                    <input type="text" name="wrong_answer_1">
-                </label>
-            </p>
+          <p>
+            <label>
+              Incorrect Answer 1<br />
+              <input type="text" name="wrong_answer_1" />
+            </label>
+          </p>
 
-            <p>
-                <label>
-                    Incorrect Answer 2<br>
-                    <input type="text" name="wrong_answer_2">
-                </label>
-            </p>
+          <p>
+            <label>
+              Incorrect Answer 2<br />
+              <input type="text" name="wrong_answer_2" />
+            </label>
+          </p>
 
-            <p>
-                <label>
-                    Incorrect Answer 3<br>
-                    <input type="text" name="wrong_answer_3">
-                </label>
-            </p>
+          <p>
+            <label>
+              Incorrect Answer 3<br />
+              <input type="text" name="wrong_answer_3" />
+            </label>
+          </p>
 
-            <p>
-                <button type="submit">Save Question</button>
-            </p>
+          <p>
+            <button type="submit">Save Question</button>
+          </p>
         </form>
-    </section>
+      </section>
 
-           <img class="leaderboard" src="../assets/leaderboard.png" alt="leaderboard image">
+      <img
+        class="leaderboard"
+        src="../assets/leaderboard.png"
+        alt="leaderboard image"
+      />
 
-
-    <footer>
-        © 2025 GeoDudes
-    </footer>
-<script src="teacher.js"></script>
-</body>
+      <footer>© 2025 GeoDudes</footer>
+    </div>
+    <script src="teacher.js"></script>
+  </body>
 </html>
