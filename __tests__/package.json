@@ -9,10 +9,7 @@
     "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "userCoverage": "jest --coverage --testPathPattern=/user/ --verbose",
     "coverage": "jest --coverage --runInBand --verbose",
-    "teacherUnitTests": "jest --testPathPattern=/frontend/teacher --watchAll --detectOpenHandles --runInBand --verbose",
-    "challengeUnitTests": "jest --testPathPattern=/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose",
-    "loginUserTests": "jest --testPathPattern=/frontend/login --watchAll --detectOpenHandles --runInBand --verbose",
-    "registeruserTests": "jest --testPathPattern=/frontend/register --watchAll --detectOpenHandles --runInBand --verbose"
+    "challengeUnitTests": "jest --testPathPattern=/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose"
   },
   "keywords": [],
   "author": "",

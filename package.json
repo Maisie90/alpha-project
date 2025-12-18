@@ -22,10 +22,7 @@
     "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
     "coverage": "jest --coverage",
     "userUnitTests": "jest --testPathPattern=/__tests__/user/unit/ --watchAll --detectOpenHandles --runInBand --verbose",
-    "teacherUnitTests": "jest --testPathPattern=/__tests__/frontend/teacher --watchAll --detectOpenHandles --runInBand --verbose",
-    "challengeUnitTests": "jest --testPathPattern=/__tests__/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose",
-    "loginUserTests": "jest --testPathPattern=/__tests__/frontend/login --watchAll --detectOpenHandles --runInBand --verbose",
-    "registeruserTests": "jest --testPathPattern=/__tests__/frontend/register --watchAll --detectOpenHandles --runInBand --verbose"
+    "challengeUnitTests": "jest --testPathPattern=/__tests__/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
