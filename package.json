@@ -18,11 +18,7 @@
   "scripts": {
     "dev": "nodemon -L backend/index.js",
     "start": "node backend/index.js",
-    "setup-db": "node ./backend/db/setup.js",
-    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
-    "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --verbose",
-    "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
-    "userCoverage": "jest --coverage --testPathPattern=/user/unit/"
+    "setup-db": "node ./backend/db/setup.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -35,14 +31,7 @@
     "pg": "^8.16.3"
   },
   "devDependencies": {
-    "jest": "^30.2.0",
     "nodemon": "^3.1.11",
     "supertest": "^7.1.4"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "./__tests__/user/integration/local-config.js",
-      "./__tests__/user/integration/config.js"
-    ]
   }
 }
