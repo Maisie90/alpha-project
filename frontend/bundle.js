@@ -1,0 +1,1 @@
+console.error("Error: Can't walk dependency graph: Cannot find module 'C:\\Users\\ASUS\\Documents\\CodingProjects\\lafosse\\alpha-project\\frontend\\script.js' from 'C:\\Users\\ASUS\\Documents\\CodingProjects\\lafosse\\alpha-project\\frontend\\_fake.js'\n    required by C:\\Users\\ASUS\\Documents\\CodingProjects\\lafosse\\alpha-project\\frontend\\_fake.js");
