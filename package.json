@@ -22,7 +22,7 @@
     "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
     "coverage": "jest --coverage",
     "userUnitTests": "jest --testPathPattern=/__tests__/user/unit/ --watchAll --detectOpenHandles --runInBand --verbose",
-        "teacherUnitTests": "jest --testPathPattern=/__tests__/frontend/teacher --watchAll --detectOpenHandles --runInBand --verbose",
+    "teacherUnitTests": "jest --testPathPattern=/__tests__/frontend/teacher --watchAll --detectOpenHandles --runInBand --verbose",
     "challengeUnitTests": "jest --testPathPattern=/__tests__/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose",
     "loginUserTests": "jest --testPathPattern=/__tests__/frontend/login --watchAll --detectOpenHandles --runInBand --verbose",
     "registeruserTests": "jest --testPathPattern=/__tests__/frontend/register --watchAll --detectOpenHandles --runInBand --verbose"
@@ -39,10 +39,10 @@
   },
   "devDependencies": {
     "@types/supertest": "^6.0.3",
-    "nodemon": "^3.1.11",
-    "supertest": "^6.3.3",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^30.2.0"
+    "jest-environment-jsdom": "^29.7.0",
+    "nodemon": "^3.1.11",
+    "supertest": "^6.3.3"
   },
   "jest": {
     "testPathIgnorePatterns": [

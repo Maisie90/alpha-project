@@ -32,7 +32,7 @@ describe("groupQuestions", () => {
 
         expect(result.length).toBe(1);
         expect(result[0].answers.length).toBe(2)
-        expect(result[0].question_text).toBe("what is the capital of uk")
+        expect(result[0].question_text).toBe("what is capital of uk")
         })
     });
     
