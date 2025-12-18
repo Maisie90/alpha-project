@@ -85,6 +85,30 @@ async function index(req, res) {
   }
 }
 
+async function me(req, res) {
+  try {
+    const username = req.user && req.user.username
+    if (!username) return res.status(400).json({ error: 'Invalid token payload' })
+
+    const user = await User.getOneByUsername(username)
+
+    // return a safe profile (omit password)
+    const profile = {
+      id: user.id,
+      username: user.username,
+      name: user.name,
+      role: user.role,
+      imageUrl: user.imageUrl,
+      createdAt: user.createdAt,
+    }
+
+    res.status(200).json(profile)
+  } catch (err) {
+    console.error('me handler error', err)
+    res.status(401).json({ error: err.message })
+  }
+}
+
 // export default {
 //     register,
 //     login,
@@ -94,4 +118,5 @@ module.exports = {
   register,
   login,
   index,
+  me,
 }
