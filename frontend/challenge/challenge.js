@@ -8,6 +8,10 @@ const form = document.querySelector("form");
 const answerInputs = form.querySelectorAll("input[type='radio']");
 const answerSpans = form.querySelectorAll("span");
 const streakCount = document.getElementById("streak-count");
+const imageContainer = document.getElementById("imageContainer");
+const logoutButton = document.getElementById("logout-button");
+const loginLink = document.getElementById("login-link");
+const registerLink = document.getElementById("register-link");
 
 async function ensureStudent() {
   const token = localStorage.getItem("token")
@@ -59,6 +63,20 @@ function showApp() {
   if (app) app.style.display = ""
   const nav = document.getElementById("student-nav")
   if (nav) nav.style.display = ""
+
+  try {
+    if (loginLink) loginLink.style.display = "none"
+    if (registerLink) registerLink.style.display = "none"
+    if (logoutButton) {
+      logoutButton.style.display = "inline-block"
+      logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("token")
+        window.location.assign("../index.html")
+      })
+    }
+  } catch (e) {
+    console.error("Error updating nav links", e)
+  }
 }
 
 function shuffleArray(array) {

@@ -1,4 +1,7 @@
 const form = document.querySelector("form")
+const logoutButton = document.getElementById("logout-button");
+const loginLink = document.getElementById("login-link");
+const registerLink = document.getElementById("register-link");
 
 async function ensureTeacher() {
   const token = localStorage.getItem("token")
@@ -50,6 +53,20 @@ function showApp() {
   if (app) app.style.display = ""
   const nav = document.getElementById("teacher-nav")
   if (nav) nav.style.display = ""
+
+  try {
+    if (loginLink) loginLink.style.display = "none"
+    if (registerLink) registerLink.style.display = "none"
+    if (logoutButton) {
+      logoutButton.style.display = "inline-block"
+      logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("token")
+        window.location.assign("../index.html")
+      })
+    }
+  } catch (e) {
+    console.error("Error updating nav links", e)
+  }
 }
 
 form.addEventListener("submit", async function (event) {
