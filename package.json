@@ -1,7 +1,19 @@
 {
   "name": "alpha-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "An interactive web-based educational platform designed to improve student engagement and knowledge retention in non-STEM subjects such as languages and geography through teacher-created quizzes.",
+  "keywords": [],
+  "homepage": "https://github.com/Maisie90/alpha-project#readme",
+  "bugs": {
+    "url": "https://github.com/Maisie90/alpha-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maisie90/alpha-project.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -L backend/index.js",
@@ -12,18 +24,6 @@
     "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "userCoverage": "jest --coverage --testPathPattern=/user/unit/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Maisie90/alpha-project.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Maisie90/alpha-project/issues"
-  },
-  "homepage": "https://github.com/Maisie90/alpha-project#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",

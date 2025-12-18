@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
-    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose",
-    "integrationTests": "jest --testPathPattern=/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
+    "test": "jest ",
+    "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --verbose",
+    "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "coverage": "jest --coverage --testPathPattern=/unit/"
   },
   "keywords": [],
@@ -14,8 +14,10 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "jest": "^30.2.0",
-    "supertest": "^7.1.4"
+        "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+
   },
   "jest": {
     "testPathIgnorePatterns": [

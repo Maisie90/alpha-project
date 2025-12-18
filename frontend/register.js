@@ -1,3 +1,5 @@
+
+
 document.getElementById("register-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -21,6 +23,7 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
     const data = await response.json();
 
     if (response.status == 201) {
+        alert("Registration successful! Please log in.");
         window.location.assign("index.html");
     } else {
         alert(data.error);
