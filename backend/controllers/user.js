@@ -13,6 +13,13 @@ async function register(req, res) {
   try {
     const data = req.body
 
+    // Validate required fields before hashing
+    if (!data || !data.username || !data.password || !data.name || !data.role) {
+      return res
+        .status(400)
+        .json({ error: "Username, password, name, and role are required." })
+    }
+
     // Generate a salt with a specific cost
     const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS))
 
@@ -23,6 +30,7 @@ async function register(req, res) {
 
     res.status(201).send(result)
   } catch (err) {
+    console.error('register error:', err && err.message ? err.message : err)
     res.status(400).json({ error: err.message })
   }
 }

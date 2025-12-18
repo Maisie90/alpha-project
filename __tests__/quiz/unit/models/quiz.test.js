@@ -1,7 +1,5 @@
-// __tests__/quiz.spec.js
-
-const Quiz = require("../../../../backend/models/Quiz")
-const db = require("../../../../backend/db/connect")
+const Goat = require('../../../models/Goat')
+const db = require('../../../database/connect')
 
 // Mock the db module
 jest.mock("../../../../backend/db/connect", () => ({

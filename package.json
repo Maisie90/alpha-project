@@ -20,9 +20,12 @@
     "start": "node backend/index.js",
     "setup-db": "node ./backend/db/setup.js",
     "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
-    "coverage": "jest --coverage",
+    "coverage": "jest --coverage --watchAll --detectOpenHandles --runInBand --verbose",
     "userUnitTests": "jest --testPathPattern=/__tests__/user/unit/ --watchAll --detectOpenHandles --runInBand --verbose",
-    "challengeUnitTests": "jest --testPathPattern=/__tests__/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose"
+    "teacherUnitTests": "jest --testPathPattern=/__tests__/frontend/teacher --watchAll --detectOpenHandles --runInBand --verbose",
+    "challengeUnitTests": "jest --testPathPattern=/__tests__/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose",
+    "loginUserTests": "jest --testPathPattern=/__tests__/frontend/login --watchAll --detectOpenHandles --runInBand --verbose",
+    "registeruserTests": "jest --testPathPattern=/__tests__/frontend/register --watchAll --detectOpenHandles --runInBand --verbose"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -47,7 +50,8 @@
       "./__tests__/user/integration/config.js",
       "./local-database/*",
       "./node_modules/*",
-      "./coverage/*"
+      "./coverage/*",
+      "./__tests__/local-config.js"
     ]
   }
 }
