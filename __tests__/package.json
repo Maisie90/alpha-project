@@ -8,7 +8,11 @@
     "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --detectOpenHandles --runInBand --verbose",
     "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "userCoverage": "jest --coverage --testPathPattern=/user/ --verbose",
-    "coverage": "jest --coverage --runInBand --verbose"
+    "coverage": "jest --coverage --runInBand --verbose",
+    "teacherUnitTests": "jest --testPathPattern=/frontend/teacher --watchAll --detectOpenHandles --runInBand --verbose",
+    "challengeUnitTests": "jest --testPathPattern=/frontend/challenge --watchAll --detectOpenHandles --runInBand --verbose",
+    "loginUserTests": "jest --testPathPattern=/frontend/login --watchAll --detectOpenHandles --runInBand --verbose",
+    "registeruserTests": "jest --testPathPattern=/frontend/register --watchAll --detectOpenHandles --runInBand --verbose"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +21,7 @@
   "devDependencies": {
     "@types/supertest": "^6.0.3",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.2.0",
     "nodemon": "^3.0.1",
     "supertest": "^6.3.3"
   },
@@ -25,7 +30,8 @@
       "./user/integration/local-config.js",
       "./user/integration/config.js",
       "./local-database/*",
-      "./node_modules/*"
+      "./node_modules/*",
+      "./coverage/*"
     ]
   }
 }
