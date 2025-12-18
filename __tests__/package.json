@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest ",
-    "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --verbose",
+    "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --detectOpenHandles --runInBand --verbose",
     "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "userCoverage": "jest --coverage --testPathPattern=/user/ --verbose"
   },
