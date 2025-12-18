@@ -9,6 +9,57 @@ const answerInputs = form.querySelectorAll("input[type='radio']");
 const answerSpans = form.querySelectorAll("span");
 const streakCount = document.getElementById("streak-count");
 
+async function ensureStudent() {
+  const token = localStorage.getItem("token")
+  if (!token) {
+    window.location.assign("../index.html")
+    return
+  }
+
+  try {
+    const res = await fetch("https://api.alpha-project.duckdns.org/users/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+
+    if (!res.ok) throw new Error("unauthorized")
+
+    const data = await res.json()
+    const role = data.role || data.roles || (data.user && data.user.role)
+
+    if (Array.isArray(role)) {
+      if (role.includes("student")) {
+        showApp()
+        return
+      } else {
+        window.location.assign("../forbidden.html")
+        return
+      }
+    }
+
+    if (role === "student") {
+      showApp()
+      return
+    }
+
+    window.location.assign("../forbidden.html")
+  } catch (err) {
+    console.error("Role verification failed", err)
+    window.location.assign("../forbidden.html")
+  }
+}
+
+;(async () => {
+  await ensureStudent()
+})()
+
+function showApp() {
+  const overlay = document.getElementById("loader-overlay")
+  if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay)
+  const app = document.getElementById("student-app")
+  if (app) app.style.display = ""
+  const nav = document.getElementById("student-nav")
+  if (nav) nav.style.display = ""
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
