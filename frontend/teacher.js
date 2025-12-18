@@ -55,7 +55,7 @@ form.addEventListener("submit", async function (event) {
 
     try {
         const response = await fetch(
-            "http://localhost:3000/quizzes/quiz",
+            "https://api.alpha-project.duckdns.org/quizzes/quiz",
             {
                 method: "POST",
                 headers: {

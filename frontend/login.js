@@ -31,7 +31,7 @@ loginForm.addEventListener("submit", async function (event) {
     }),
   }
 
-  const response = await fetch("http://localhost:3000/users/login", options)
+  const response = await fetch("https://api.alpha-project.duckdns.org/users/login", options)
   const data = await response.json()
 
   if (response.status == 200) {
