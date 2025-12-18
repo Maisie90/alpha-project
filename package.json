@@ -18,7 +18,10 @@
   "scripts": {
     "dev": "nodemon -L backend/index.js",
     "start": "node backend/index.js",
-    "setup-db": "node ./backend/db/setup.js"
+    "setup-db": "node ./backend/db/setup.js",
+    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
+    "coverage": "jest --coverage",
+    "userUnitTests": "jest --testPathPattern=/__tests__/user/unit/ --watchAll --detectOpenHandles --runInBand --verbose"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -31,7 +34,9 @@
     "pg": "^8.16.3"
   },
   "devDependencies": {
+    "@types/supertest": "^6.0.3",
     "nodemon": "^3.1.11",
-    "supertest": "^7.1.4"
+    "supertest": "^6.3.3",
+    "jest": "^29.7.0"
   }
 }

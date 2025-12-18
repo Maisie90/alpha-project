@@ -59,9 +59,13 @@ describe("User API Endpoints", () => {
       const incompleteUser = {
         username: "testuser",
       }
-      const response = await request(api).post("/users/register").send(incompleteUser)
+      const response = await request(api)
+        .post("/users/register")
+        .send(incompleteUser)
       expect(response.status).toBe(400)
-      expect(response.body.error).toBe("Username, password, name, and role are required.")
+      expect(response.body.error).toBe(
+        "Username, password, name, and role are required.",
+      )
     })
   })
 })

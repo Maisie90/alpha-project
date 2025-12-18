@@ -2,3 +2,4 @@
 /node_modules
 __tests__/user/node_modules
 __tests__/user/local-database/node_modules
+coverage
