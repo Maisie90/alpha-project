@@ -299,3 +299,8 @@ label.answers input[type='radio'] {
 label.answers input[type='radio']:checked +span {
     color: #356d00
 }
+
+#imageContainer{
+    display:flex;
+    justify-content: center;
+}

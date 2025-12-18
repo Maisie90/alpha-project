@@ -106,7 +106,7 @@ form.addEventListener("submit", function (event) {
             `Challenge complete! You scored ${score} out of ${questions.length}.`;
         form.style.display = "none";
         const img1 = document.createElement('img'); 
-        img1.src= frontend/assets/passport1.png; 
+        img1.src= "/frontend/assets/passport1.png"; 
         imageContainer.innerHTML = ""; 
         imageContainer.appendChild(img1)
     }
