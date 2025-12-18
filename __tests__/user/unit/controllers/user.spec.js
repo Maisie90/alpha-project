@@ -1,5 +1,5 @@
-const userController = require('../backend/controllers/user');
-const User = require('../backend/models/user');
+const userController = require('../../../../backend/controllers/user');
+const User = require('../../../../backend/models/user');
 
 // Mocking response methods
 const mockSend = jest.fn()
