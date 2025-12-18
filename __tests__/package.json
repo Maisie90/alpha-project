@@ -7,7 +7,7 @@
     "test": "jest ",
     "userUnitTests": "jest --testPathPattern=/user/unit/ --watchAll --verbose",
     "userIntegrationTests": "jest --testPathPattern=/user/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
-    "coverage": "jest --coverage --testPathPattern=/unit/"
+    "userCoverage": "jest --coverage --testPathPattern=/user/ --verbose"
   },
   "keywords": [],
   "author": "",
