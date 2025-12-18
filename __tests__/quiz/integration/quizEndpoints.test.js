@@ -2,19 +2,35 @@ const request = require("supertest")
 const app = require("../../../backend/app")
 const { resetTestDB } = require("../../local-config")
 
-
 describe("Quiz Router Endpoints", () => {
-  test("GET /api/quizzes/quiz should return all quizzes", async () => {
+  let api
+
+  beforeEach(async () => {
+    await resetTestDB()
+  })
+
+  beforeAll(() => {
+    api = app.listen(4000, () => {
+      console.log("Test server running on port 4000")
+    })
+  })
+
+  afterAll((done) => {
+    console.log("Gracefully closing server")
+    api.close(done)
+  })
+
+  test("GET /quizzes/quiz should return all quizzes", async () => {
     const res = await request(app).get("/quizzes/quiz")
     expect(res.statusCode).toEqual(200)
     expect(Array.isArray(res.body)).toBe(true)
   })
-  test("GET /api/quizzes/quiz should return all quizzes", async () => {
-    const res = await request(app).get("/quizzes/quiz/3")
+  test("GET /quizzes/quiz/1 should return a quiz", async () => {
+    const res = await request(app).get("/quizzes/quiz/1")
     expect(res.statusCode).toEqual(200)
     expect(Array.isArray(res.body)).toBe(true)
   })
-  test("POST /api/quizzes/quiz should return all quizzes", async () => {
+  test("POST /quizzes/quiz should create a quiz", async () => {
     const data = {
       question_text: "What is the capital of France?",
       answers: [

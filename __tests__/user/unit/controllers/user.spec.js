@@ -13,6 +13,9 @@ const mockStatus = jest.fn(() => ({
   end: mockEnd 
 }));
 
+// mock response object used by controller methods
+const mockRes = { status: mockStatus };
+
 describe('User controller', () => {
   beforeEach(() => jest.clearAllMocks())
 
@@ -27,7 +30,7 @@ describe('User controller', () => {
       
       expect(User.getAll).toHaveBeenCalledTimes(1)
       expect(mockStatus).toHaveBeenCalledWith(200)
-      expect(mockSend).toHaveBeenCalledWith({ data: testUser })
+      expect(mockJson).toHaveBeenCalledWith(testUser)
     })
 
     it('should return an error upon failure', async () => {
@@ -37,7 +40,7 @@ describe('User controller', () => {
       
       expect(User.getAll).toHaveBeenCalledTimes(1)
       expect(mockStatus).toHaveBeenCalledWith(500)
-      expect(mockSend).toHaveBeenCalledWith({ error: 'Something happened to your db' })
+      expect(mockJson).toHaveBeenCalledWith({ error: 'Something happened to your db' })
     })
   })
 })
