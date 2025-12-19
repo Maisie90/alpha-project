@@ -1,8 +1,8 @@
-const Goat = require('../../../models/Goat')
-const db = require('../../../database/connect')
+const Quiz = require("../../../../backend/models/Quiz")
+const db = require('../../../local-connect')
 
 // Mock the db module
-jest.mock("../../../../backend/db/connect", () => ({
+jest.mock("../../../local-connect", () => ({
   query: jest.fn(),
 }))
 
