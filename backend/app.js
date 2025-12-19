@@ -3,10 +3,10 @@ const cors = require("cors")
 const app = express()
 const userRouter = require("./routers/user")
 const quizRouter = require("./routers/quiz")
-const logger = require("./middleware/logger");
+const { httpLogger } = require("./middleware/logger");
 
-//Middleware to log requests
-app.use(logger);
+// Middleware to log requests (pino-http)
+app.use(httpLogger);
 
 //Middleware to parese JSON Bodies (Handling data from frontend)
 app.use(express.json())
