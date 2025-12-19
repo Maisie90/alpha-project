@@ -21,6 +21,7 @@ async function ensureTeacher() {
 
     if (Array.isArray(role)) {
       if (role.includes("teacher")) {
+        await fetchAccounts()
         showApp()
         return
       } else {
@@ -30,6 +31,7 @@ async function ensureTeacher() {
     }
 
     if (role === "teacher") {
+      await fetchAccounts()
       showApp()
       return
     }
@@ -134,6 +136,4 @@ function displayAccounts(accounts) {
   section.appendChild(table)
 }
 
-;(async () => {
-  await fetchAccounts()
-})()
+// accounts are fetched from `ensureTeacher()` after role verification
