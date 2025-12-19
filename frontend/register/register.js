@@ -1,4 +1,17 @@
+const usernameInput = document.getElementById("username");
 
+if (usernameInput) {
+    usernameInput.addEventListener("keydown", (e) => {
+        if (e.key === ' ' || e.code === 'Space') {
+            e.preventDefault();
+        }
+    });
+
+    usernameInput.addEventListener("input", () => {
+        const cleaned = usernameInput.value.replace(/\s+/g, '');
+        if (usernameInput.value !== cleaned) usernameInput.value = cleaned;
+    });
+}
 
 document.getElementById("register-form").addEventListener("submit", async (e) => {
     e.preventDefault();
