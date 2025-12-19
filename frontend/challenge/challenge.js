@@ -1,17 +1,17 @@
-let questions = [];
-let currentQuestionIndex = 0;
-let score = 0;
-let streak = 0;
+let questions = []
+let currentQuestionIndex = 0
+let score = 0
+let streak = 0
 
-const questionText = document.getElementById("question-text");
-const form = document.querySelector("form");
-const answerInputs = form.querySelectorAll("input[type='radio']");
-const answerSpans = form.querySelectorAll("span");
-const streakCount = document.getElementById("streak-count");
-const imageContainer = document.getElementById("imageContainer");
-const logoutButton = document.getElementById("logout-button");
-const loginLink = document.getElementById("login-link");
-const registerLink = document.getElementById("register-link");
+const questionText = document.getElementById("question-text")
+const form = document.querySelector("form")
+const answerInputs = form.querySelectorAll("input[type='radio']")
+const answerSpans = form.querySelectorAll("span")
+const streakCount = document.getElementById("streak-count")
+const imageContainer = document.getElementById("imageContainer")
+const logoutButton = document.getElementById("logout-button")
+const loginLink = document.getElementById("login-link")
+const registerLink = document.getElementById("register-link")
 
 async function ensureStudent() {
   const token = localStorage.getItem("token")
@@ -32,6 +32,7 @@ async function ensureStudent() {
 
     if (Array.isArray(role)) {
       if (role.includes("student")) {
+        await fetchQuestions()
         showApp()
         return
       } else {
@@ -41,6 +42,7 @@ async function ensureStudent() {
     }
 
     if (role === "student") {
+      await fetchQuestions()
       showApp()
       return
     }
@@ -80,105 +82,104 @@ function showApp() {
 }
 
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
 }
 
 function groupQuestions(apiData) {
-    const grouped = {};
+  const grouped = {}
 
-    apiData.forEach(item => {
-        if (!grouped[item.question_id]) {
-            grouped[item.question_id] = {
-                question_text: item.question,
-                answers: []
-            };
-        }
+  apiData.forEach((item) => {
+    if (!grouped[item.question_id]) {
+      grouped[item.question_id] = {
+        question_text: item.question,
+        answers: [],
+      }
+    }
 
-        grouped[item.question_id].answers.push({
-            answer_text: item.answer_text,
-            correct_answer: item.correct_answer
-        });
-    });
+    grouped[item.question_id].answers.push({
+      answer_text: item.answer_text,
+      correct_answer: item.correct_answer,
+    })
+  })
 
-    return Object.values(grouped);
+  return Object.values(grouped)
 }
 
 async function fetchQuestions() {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token")
 
-    if (!token) {
-        window.location.assign("../forbidden.html");
-        return;
-    }
+  if (!token) {
+    window.location.assign("../forbidden.html")
+    return
+  }
 
-    const response = await fetch(
-        "https://api.alpha-project.duckdns.org/quizzes/quiz",
-        {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                Authorization: `Bearer ${token}`
-            }
-        }
-    );
+  const response = await fetch(
+    "https://api.alpha-project.duckdns.org/quizzes/quiz",
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
 
-    const apiData = await response.json();
-    questions = groupQuestions(apiData);
-    loadQuestion();
+  const apiData = await response.json()
+  questions = groupQuestions(apiData)
+  loadQuestion()
 }
 
 function loadQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = questions[currentQuestionIndex]
 
-    questionText.textContent = currentQuestion.question_text;
+  questionText.textContent = currentQuestion.question_text
 
-    shuffleArray(currentQuestion.answers);
+  shuffleArray(currentQuestion.answers)
 
-    currentQuestion.answers.forEach((answer, index) => {
-        answerSpans[index].textContent = answer.answer_text;
-        answerInputs[index].checked = false;
-    });
+  currentQuestion.answers.forEach((answer, index) => {
+    answerSpans[index].textContent = answer.answer_text
+    answerInputs[index].checked = false
+  })
 }
 
 form.addEventListener("submit", function (event) {
-    event.preventDefault();
+  event.preventDefault()
 
-    let selectedIndex = -1;
+  let selectedIndex = -1
 
-    answerInputs.forEach((input, index) => {
-        if (input.checked) selectedIndex = index;
-    });
+  answerInputs.forEach((input, index) => {
+    if (input.checked) selectedIndex = index
+  })
 
-    if (selectedIndex === -1) return;
+  if (selectedIndex === -1) return
 
-    const isCorrect =
-        questions[currentQuestionIndex].answers[selectedIndex].correct_answer;
+  const isCorrect =
+    questions[currentQuestionIndex].answers[selectedIndex].correct_answer
 
-    if (isCorrect) {
-        score++;
-        streak++;
-    } else {
-        streak = 0;
-    }
+  if (isCorrect) {
+    score++
+    streak++
+  } else {
+    streak = 0
+  }
 
-    streakCount.textContent = streak;
+  streakCount.textContent = streak
 
-    currentQuestionIndex++;
+  currentQuestionIndex++
 
-    if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-    } else {
-        questionText.textContent =
-            `Challenge complete! You scored ${score} out of ${questions.length}.`;
-        form.style.display = "none";
-        const img1 = document.createElement('img'); 
-        img1.src= "/frontend/assets/passport1.png"; 
-        imageContainer.innerHTML = ""; 
-        imageContainer.appendChild(img1)
-    }
-});
+  if (currentQuestionIndex < questions.length) {
+    loadQuestion()
+  } else {
+    questionText.textContent = `Challenge complete! You scored ${score} out of ${questions.length}.`
+    form.style.display = "none"
+    const img1 = document.createElement("img")
+    img1.src = "/frontend/assets/passport1.png"
+    imageContainer.innerHTML = ""
+    imageContainer.appendChild(img1)
+  }
+})
 
-fetchQuestions();
+fetchQuestions()
