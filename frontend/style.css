@@ -347,13 +347,13 @@ label.answers input[type="radio"]:checked + span {
   border-collapse: collapse;
   width: 100%;
   min-width: 600px;
-  background: rgba(255,255,255,0.85);
+  background: #f4f8f7;
   border-radius: 8px;
   overflow: hidden;
 }
 
 #accounts-app section:nth-of-type(2) table thead {
-  background: rgba(63,165,140,0.08);
+  background: #f7e0b553;
 }
 
 #accounts-app section:nth-of-type(2) table th,
