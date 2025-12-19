@@ -1,11 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>hihihihihihih</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teacher Dashboard | GeoPop</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div
+      id="loader-overlay"
+      style="
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      "
+    >
+      <iframe
+        src="../loading.html"
+        title="Authorising"
+        style="border: 0; width: 100vw; height: 100vh; background: transparent"
+      ></iframe>
+    </div>
+
+    <nav style="display: none" id="accounts-nav">
+      <a href="../index.html">
+        <img class="logo" src="../assets/geopop.png" alt="GeoPop Logo"
+      /></a>
+      <div class="nav-links">
+        <a href="../challenge/index.html">Challenge</a>
+        <a href="../teacher/index.html">Teacher Dashboard</a>
+        <a href="../accounts/index.html">Accounts</a>
+        <button id="logout-button" style="display: none">Logout</button>
+      </div>
+    </nav>
+    <div id="accounts-app" style="display: none">
+      <section>
+        <h2>Accounts Dashboard</h2>
+        <p>Here are the list of users registered on the platform.</p>
+      </section>
+
+      <section style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; align-items: center">
+        <h3>User List</h3>
+      </section>
+
+      <footer>© 2025 GeoDudes</footer>
+    </div>
+    <script src="accounts.js"></script>
+  </body>
 </html>

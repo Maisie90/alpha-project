@@ -6,7 +6,7 @@ const registerLink = document.getElementById("register-link");
 async function ensureTeacher() {
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.assign("../index.html")
+    window.location.assign("../forbidden.html")
     return
   }
 
@@ -74,7 +74,7 @@ form.addEventListener("submit", async function (event) {
 
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.assign("../index.html")
+    window.location.assign("../forbidden.html")
     return
   }
 

@@ -16,7 +16,7 @@ const registerLink = document.getElementById("register-link");
 async function ensureStudent() {
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.assign("../index.html")
+    window.location.assign("../forbidden.html")
     return
   }
 
@@ -110,7 +110,7 @@ async function fetchQuestions() {
     const token = localStorage.getItem("token");
 
     if (!token) {
-        window.location.assign("../index.html");
+        window.location.assign("../forbidden.html");
         return;
     }
 
